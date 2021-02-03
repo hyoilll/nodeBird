@@ -47,6 +47,7 @@ const AppLayout = ({ children }) => {
         <Col xs={24} md={12}>
           {children}
         </Col>
+        {/* "rel="noreferrer noopener"" referrer와 noopener의 정보를 숨김*/}
         <Col xs={24} md={6}>
           <a
             href="https://nervous-snyder-dda352.netlify.app/"
