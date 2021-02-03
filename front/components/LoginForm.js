@@ -7,7 +7,11 @@ const ButtonWrapper = styled.div`
   margin-top: 10px;
 `;
 
-const LoginForm = () => {
+const FormWrapper = styled(Form)`
+  padding: 10px;
+`;
+
+const LoginForm = ({ setIsLoggedIn }) => {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
 
@@ -21,8 +25,14 @@ const LoginForm = () => {
     setPw(e.target.value);
   }, []);
 
+  const onSubmitForm = useCallback(() => {
+    //   onFinish는 e.preventDefault가 적용되어 있음
+    console.log(id, pw);
+    setIsLoggedIn(true);
+  }, [id, pw]);
+
   return (
-    <Form>
+    <FormWrapper onFinish={onSubmitForm}>
       <div>
         <label htmlFor="user-id">id</label>
         <Input name="user-id" value={id} onChange={onChangeId} require />
@@ -48,7 +58,7 @@ const LoginForm = () => {
         </Link>
       </ButtonWrapper>
       <div></div>
-    </Form>
+    </FormWrapper>
   );
 };
 
