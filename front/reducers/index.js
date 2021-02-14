@@ -64,6 +64,7 @@ const rootReducer = (state = initialState, action) => {
         },
       };
     default:
+      // 맨 처음 reducer 초기화시 default값이 없으면 return undefined가 되기 때문에 적어줌
       return state;
   }
 };
