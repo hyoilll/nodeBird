@@ -4,6 +4,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import useInput from "../hooks/useinput";
+import { loginAction } from "../reducers/index";
+import { useDispatch } from "react-redux";
 
 const ButtonWrapper = styled.div`
   margin-top: 10px;
@@ -13,7 +15,8 @@ const FormWrapper = styled(Form)`
   padding: 10px;
 `;
 
-const LoginForm = ({ setIsLoggedIn }) => {
+const LoginForm = () => {
+  const dispatch = useDispatch();
   // Custom Hooks
   const [id, onChangeId] = useInput("");
   const [pw, onChangePw] = useInput("");
@@ -33,7 +36,7 @@ const LoginForm = ({ setIsLoggedIn }) => {
   const onSubmitForm = useCallback(() => {
     //   onFinish는 e.preventDefault가 적용되어 있음
     console.log(id, pw);
-    setIsLoggedIn(true);
+    dispatch(loginAction(id, pw));
   }, [id, pw]);
 
   return (
@@ -67,10 +70,6 @@ const LoginForm = ({ setIsLoggedIn }) => {
       <div></div>
     </FormWrapper>
   );
-};
-
-LoginForm.propTypes = {
-  setIsLoggedIn: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
