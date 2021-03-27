@@ -1,5 +1,5 @@
 import { HYDRATE } from "next-redux-wrapper";
-import { combineReducers } from "redux";
+import { combineReducers } from "redux"; // 리듀서(함수)를 합쳐줌
 
 import user from "./user";
 import post from "./post";
@@ -22,9 +22,8 @@ import post from "./post";
 const rootReducer = combineReducers({
   index: (state = {}, action) => {
     switch (action.type) {
-      case "HYDRATE":
+      case HYDRATE: //redux 서버사이드렌더링을 위함
         return { ...state, ...action.payload };
-
       default:
         // 맨 처음 reducer 초기화시 default값이 없으면 return undefined가 되기 때문에 적어줌
         return state;
