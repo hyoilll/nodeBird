@@ -1,4 +1,4 @@
-import { Button, Card, Popover } from "antd";
+import { Button, Card, Popover, List, Comment } from "antd";
 import {
   RetweetOutlined,
   HeartOutlined,
@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import Avatar from "antd/lib/avatar/avatar";
 import PostImages from "../components/PostImages";
 import { useCallback, useState } from "react";
+import CommentForm from "./CommentForm";
 
 const PostCard = ({ post }) => {
   const { me } = useSelector((state) => state.user);
@@ -73,7 +74,28 @@ const PostCard = ({ post }) => {
             description={post.content}
           ></Card.Meta>
         </Card>
-        {commentFormOpend && <div>comment</div>}
+        {commentFormOpend && (
+          <div>
+            <CommentForm post={post} />
+            <List
+              header={`${post.Comments.length}개의 댓글`}
+              itemLayout="horizontal"
+              dataSource={post.Comments}
+              renderItem={(item) => {
+                //item = post.comments
+                return (
+                  <li>
+                    <Comment
+                      author={item.User.nickname}
+                      avatar={<Avatar>{item.User.nickname[0]}</Avatar>}
+                      content={item.content}
+                    ></Comment>
+                  </li>
+                );
+              }}
+            />
+          </div>
+        )}
       </div>
     </>
   );
