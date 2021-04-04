@@ -36,7 +36,7 @@ const LoginForm = () => {
   const onSubmitForm = useCallback(() => {
     //   onFinish는 e.preventDefault가 적용되어 있음
     console.log(id, pw);
-    dispatch(loginAction(id, pw));
+    dispatch(loginAction({ id, pw }));
   }, [id, pw]);
 
   return (

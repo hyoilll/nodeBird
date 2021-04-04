@@ -45,7 +45,7 @@ const dummyPost = {
   content: "dumyData",
   User: {
     id: 1,
-    nickname: "zerocho",
+    nickname: "Hyoil",
   },
   Images: [],
   Comments: [],
