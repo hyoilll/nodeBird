@@ -12,6 +12,7 @@ import Avatar from "antd/lib/avatar/avatar";
 import PostImages from "../components/PostImages";
 import { useCallback, useState } from "react";
 import CommentForm from "./CommentForm";
+import PostCardContent from "./PostcardContent";
 
 const PostCard = ({ post }) => {
   const { me } = useSelector((state) => state.user);
@@ -71,7 +72,7 @@ const PostCard = ({ post }) => {
           <Card.Meta
             avatar={<Avatar>{post.User.nickname[0]}</Avatar>}
             title={post.User.nickname}
-            description={post.content}
+            description={<PostCardContent postData={post.content} />}
           ></Card.Meta>
         </Card>
         {commentFormOpend && (
