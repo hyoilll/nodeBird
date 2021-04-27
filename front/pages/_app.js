@@ -1,7 +1,7 @@
 import "antd/dist/antd.css";
 import PropTypes from "prop-types";
 import Head from "next/head";
-
+import withReduxSaga from "next-redux-saga"; // next와 redux-saga를 연결하는 라이브러리
 import wrapper from "../store/configureStore";
 
 const NodeBird = ({ Component }) => {
@@ -20,4 +20,4 @@ NodeBird.propTypes = {
   Component: PropTypes.elementType.isRequired,
 };
 
-export default wrapper.withRedux(NodeBird);
+export default wrapper.withRedux(withReduxSaga(NodeBird));
